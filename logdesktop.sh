@@ -13,7 +13,10 @@ mkdir -p desktopscr
 
 while true
 do
-	islocked=true; if [[ $(gnome-screensaver-command -q) =~ .*inactive.* ]]; then islocked=false; fi
+	islocked=true
+	if [[ $(gnome-screensaver-command -q) =~ .*inactive.* ]]; then
+		islocked=false
+	fi
 
 	if ! $islocked
 	then

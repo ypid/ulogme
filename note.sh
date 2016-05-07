@@ -6,9 +6,9 @@ mkdir -p logs
 
 read -p "Enter note: " n
 
-if [ -z $1 ] 
-then 
-  T="$(date +%s)" # defualt to current time
+if [ -z "$1" ]
+then
+  T="$(date +%s)" # default to current time
 else
   T=$1 # argument was provided, use it!
 fi
