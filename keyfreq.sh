@@ -8,9 +8,6 @@
 LANG=en_US.utf8
 
 helperfile='/dev/shm/keyfreqraw.txt'
-## FIXME: Still potential security risk even when not logged to persistent storage.
-## Maybe rewrite script in Python and count STDOUT directly and send SIGINT
-## after 9 seconds.
 
 mkdir -p logs
 
@@ -18,10 +15,10 @@ trap 'kill $(jobs -p)' EXIT
 
 while true
 do
-  xinput test 11 > $helperfile &
+  xinput test 11 | tr -d '0-9' > $helperfile &
 
   ## In case you can not get `xinput` to work. Note that you will need to run `showkey` as root.
-  # showkey > $helperfile &
+  # showkey | tr -d '0-9' > $helperfile &
 
   # Work in windows of 9 seconds
   sleep 9
