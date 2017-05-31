@@ -15,7 +15,7 @@ trap 'kill $(jobs -p)' EXIT
 
 while true
 do
-  xinput test "${ULOGME_KEYBOARD_ID:-11}" | tr -d '0-9' > $helperfile &
+  xinput test "${ULOGME_KEYBOARD_ID:-11}" | tr -d '0-9' > "$helperfile" &
 
   ## In case you can not get `xinput` to work. Note that you will need to run `showkey` as root.
   # showkey | tr -d '0-9' > $helperfile &
